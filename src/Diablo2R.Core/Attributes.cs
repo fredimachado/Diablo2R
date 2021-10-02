@@ -33,58 +33,58 @@ namespace Diablo2R.Core
             int id;
             while ((id = bitReader.ReadBits(9)) != EndOfAttributes)
             {
-                var attribute = (Attribute)id;
+                var attribute = (D2sAttribute)id;
                 var bitCount = attribute.BitCount();
                 var attributeValue = (uint)bitReader.ReadBits(bitCount);
 
                 switch (attribute)
                 {
-                    case Attribute.Strength:
+                    case D2sAttribute.Strength:
                         Strength = attributeValue;
                         break;
-                    case Attribute.Energy:
+                    case D2sAttribute.Energy:
                         Energy = attributeValue;
                         break;
-                    case Attribute.Dexterity:
+                    case D2sAttribute.Dexterity:
                         Dexterity = attributeValue;
                         break;
-                    case Attribute.Vitality:
+                    case D2sAttribute.Vitality:
                         Vitality = attributeValue;
                         break;
-                    case Attribute.UnusedStats:
+                    case D2sAttribute.UnusedStats:
                         UnusedStats = attributeValue;
                         break;
-                    case Attribute.UnusedSkills:
+                    case D2sAttribute.UnusedSkills:
                         UnusedSkills = attributeValue;
                         break;
-                    case Attribute.CurrentHP:
+                    case D2sAttribute.CurrentHP:
                         CurrentHP = attributeValue / 256;
                         break;
-                    case Attribute.MaxHP:
+                    case D2sAttribute.MaxHP:
                         MaxHP = attributeValue / 256;
                         break;
-                    case Attribute.CurrentMana:
+                    case D2sAttribute.CurrentMana:
                         CurrentMana = attributeValue / 256;
                         break;
-                    case Attribute.MaxMana:
+                    case D2sAttribute.MaxMana:
                         MaxMana = attributeValue / 256;
                         break;
-                    case Attribute.CurrentStamina:
+                    case D2sAttribute.CurrentStamina:
                         CurrentStamina = attributeValue / 256;
                         break;
-                    case Attribute.MaxStamina:
+                    case D2sAttribute.MaxStamina:
                         MaxStamina = attributeValue / 256;
                         break;
-                    case Attribute.Level:
+                    case D2sAttribute.Level:
                         Level = attributeValue;
                         break;
-                    case Attribute.Experience:
+                    case D2sAttribute.Experience:
                         Experience = attributeValue;
                         break;
-                    case Attribute.Gold:
+                    case D2sAttribute.Gold:
                         Gold = attributeValue;
                         break;
-                    case Attribute.StashedGold:
+                    case D2sAttribute.StashedGold:
                         StashedGold = attributeValue;
                         break;
                     default:
@@ -94,7 +94,7 @@ namespace Diablo2R.Core
         }
     }
 
-    public enum Attribute
+    public enum D2sAttribute
     {
         Strength,
         Energy,
@@ -116,26 +116,26 @@ namespace Diablo2R.Core
 
     public static class AttributeExtensions
     {
-        public static byte BitCount(this Attribute attribute)
+        public static byte BitCount(this D2sAttribute attribute)
         {
             return attribute switch
             {
-                Attribute.Strength => 10,
-                Attribute.Energy => 10,
-                Attribute.Dexterity => 10,
-                Attribute.Vitality => 10,
-                Attribute.UnusedStats => 10,
-                Attribute.UnusedSkills => 8,
-                Attribute.CurrentHP => 21,
-                Attribute.MaxHP => 21,
-                Attribute.CurrentMana => 21,
-                Attribute.MaxMana => 21,
-                Attribute.CurrentStamina => 21,
-                Attribute.MaxStamina => 21,
-                Attribute.Level => 7,
-                Attribute.Experience => 32,
-                Attribute.Gold => 25,
-                Attribute.StashedGold => 25,
+                D2sAttribute.Strength => 10,
+                D2sAttribute.Energy => 10,
+                D2sAttribute.Dexterity => 10,
+                D2sAttribute.Vitality => 10,
+                D2sAttribute.UnusedStats => 10,
+                D2sAttribute.UnusedSkills => 8,
+                D2sAttribute.CurrentHP => 21,
+                D2sAttribute.MaxHP => 21,
+                D2sAttribute.CurrentMana => 21,
+                D2sAttribute.MaxMana => 21,
+                D2sAttribute.CurrentStamina => 21,
+                D2sAttribute.MaxStamina => 21,
+                D2sAttribute.Level => 7,
+                D2sAttribute.Experience => 32,
+                D2sAttribute.Gold => 25,
+                D2sAttribute.StashedGold => 25,
                 _ => throw new InvalidOperationException()
             };
         }

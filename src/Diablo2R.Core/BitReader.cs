@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Diablo2R.Core.Tests")]
 namespace Diablo2R.Core
 {
     internal class BitReader

@@ -7,9 +7,12 @@ namespace Diablo2R.Core
         public Header Header { get; }
         public Attributes Attributes { get; }
 
-        public D2s(string filePath)
+        public D2s(string filePath) : this(File.OpenRead(filePath))
         {
-            using var stream = File.OpenRead(filePath);
+        }
+
+        public D2s(Stream stream)
+        {
             using var reader = new BinaryReader(stream);
 
             Header = new Header(reader);

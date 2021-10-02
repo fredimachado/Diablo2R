@@ -1,0 +1,125 @@
+﻿@page "/"
+@using Diablo2R.Core
+@using Tewr.Blazor.FileReader
+@using System.IO
+@using System.Linq 
+@inject IFileReaderService fileReaderService
+
+<h1>Diablo2R D2s Viewer</h1>
+
+@if (d2s == null)
+{
+<div>
+    <input type="file" @ref=inputTypeFileElement /><button @onclick=ReadFile>Read d2s</button>
+</div>
+}
+else
+{
+    <div>Character Name: @d2s.Header.CharacterName</div>
+    <div>Character Class: @d2s.Header.CharacterClass</div>
+    <div>Character Level: @d2s.Header.CharacterLevel</div>
+    <div>Last Played: @d2s.Header.LastPlayed</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@D2sAttribute.Strength</td>
+                <td>@d2s.Attributes.Strength</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.Energy</td>
+                <td>@d2s.Attributes.Energy</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.Dexterity</td>
+                <td>@d2s.Attributes.Dexterity</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.Vitality</td>
+                <td>@d2s.Attributes.Vitality</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.UnusedStats</td>
+                <td>@d2s.Attributes.UnusedStats</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.UnusedSkills</td>
+                <td>@d2s.Attributes.UnusedSkills</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.CurrentHP</td>
+                <td>@d2s.Attributes.CurrentHP</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.MaxHP</td>
+                <td>@d2s.Attributes.MaxHP</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.CurrentMana</td>
+                <td>@d2s.Attributes.CurrentMana</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.MaxMana</td>
+                <td>@d2s.Attributes.MaxMana</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.CurrentStamina</td>
+                <td>@d2s.Attributes.CurrentStamina</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.MaxStamina</td>
+                <td>@d2s.Attributes.MaxStamina</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.Level</td>
+                <td>@d2s.Attributes.Level</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.Experience</td>
+                <td>@d2s.Attributes.Experience</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.Gold</td>
+                <td>@d2s.Attributes.Gold</td>
+            </tr>
+            <tr>
+                <td>@D2sAttribute.StashedGold</td>
+                <td>@d2s.Attributes.StashedGold</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+@code
+{
+    public D2s d2s { get; set; }
+
+    private ElementReference inputTypeFileElement;
+
+    public async Task ReadFile()
+    {
+        var files = await fileReaderService.CreateReference(inputTypeFileElement).EnumerateFilesAsync();
+        var file = files.FirstOrDefault();
+        if (file is null)
+        {
+            return;
+        }
+
+        try
+        {
+            using MemoryStream memoryStream = await file.CreateMemoryStreamAsync(4096);
+            
+            d2s = new D2s(memoryStream); ;
+        }
+        catch (Exception)
+        {
+            d2s = null;
+        }
+    }
+}

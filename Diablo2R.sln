@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diablo2R.ConsoleApp", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diablo2R.Core", "src\Diablo2R.Core\Diablo2R.Core.csproj", "{5944A20F-182C-45A9-9038-6783A272F3FA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diablo2R.Core.Tests", "tests\Diablo2R.Core.Tests\Diablo2R.Core.Tests.csproj", "{7A5C66A3-7945-432A-ACA9-A2FC0BE70BC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diablo2R.BlazorWasm", "src\Diablo2R.BlazorWasm\Diablo2R.BlazorWasm.csproj", "{0E626A39-C646-4F8C-B721-83C5610E7230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{5944A20F-182C-45A9-9038-6783A272F3FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5944A20F-182C-45A9-9038-6783A272F3FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5944A20F-182C-45A9-9038-6783A272F3FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A5C66A3-7945-432A-ACA9-A2FC0BE70BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5C66A3-7945-432A-ACA9-A2FC0BE70BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5C66A3-7945-432A-ACA9-A2FC0BE70BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5C66A3-7945-432A-ACA9-A2FC0BE70BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E626A39-C646-4F8C-B721-83C5610E7230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E626A39-C646-4F8C-B721-83C5610E7230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E626A39-C646-4F8C-B721-83C5610E7230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E626A39-C646-4F8C-B721-83C5610E7230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E58FA642-07E0-40BE-8537-7D43FAA05268} = {2B981051-6DA0-4F55-88C5-47F003295EFF}
 		{5944A20F-182C-45A9-9038-6783A272F3FA} = {2B981051-6DA0-4F55-88C5-47F003295EFF}
+		{7A5C66A3-7945-432A-ACA9-A2FC0BE70BC5} = {62A82AAD-95AB-421E-B4A0-AA7C30AC6CB3}
+		{0E626A39-C646-4F8C-B721-83C5610E7230} = {2B981051-6DA0-4F55-88C5-47F003295EFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F7DC214-1C64-4762-956B-4183991D2B8F}
