@@ -11,7 +11,7 @@ namespace Diablo2R.Core
         public int CharacterLevel { get; }
         public DateTime LastPlayed { get; }
 
-        public Header(BinaryReader reader)
+        internal Header(BinaryReader reader)
         {
             var headerBytes = reader.ReadBytes(765);
 

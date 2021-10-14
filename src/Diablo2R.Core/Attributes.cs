@@ -24,7 +24,7 @@ namespace Diablo2R.Core
         public uint Gold { get; }
         public uint StashedGold { get; }
 
-        public Attributes(BinaryReader reader)
+        internal Attributes(BinaryReader reader)
         {
             reader.ReadInt16(); // Header
 
@@ -114,7 +114,7 @@ namespace Diablo2R.Core
         StashedGold
     }
 
-    public static class AttributeExtensions
+    internal static class AttributeExtensions
     {
         public static byte BitCount(this D2sAttribute attribute)
         {
